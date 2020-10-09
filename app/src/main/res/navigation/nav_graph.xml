@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragmentMainList">
+
+    <fragment
+        android:id="@+id/fragmentMainList"
+        android:name="com.example.todo.fragment.FragmentMainList"
+        android:label="fragment_main_list"
+        tools:layout="@layout/fragment_main_list" >
+        <action
+            android:id="@+id/action_fragmentMainList_to_secondFragmentAddNote"
+            app:destination="@id/secondFragmentAddNote"
+            app:enterAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_fragmentMainList_to_fragmentMenuList"
+            app:destination="@id/fragmentMenuList"
+            app:enterAnim="@android:anim/fade_out"
+            app:exitAnim="@anim/nav_default_enter_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/secondFragmentAddNote"
+        android:name="com.example.todo.fragment.SecondFragmentAddNote"
+        android:label="fragment_second_add_note"
+        tools:layout="@layout/fragment_second_add_note" >
+        <action
+            android:id="@+id/action_secondFragmentAddNote_to_fragmentMainList"
+            app:destination="@id/fragmentMainList"
+            app:enterAnim="@android:anim/slide_in_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentMenuList"
+        android:name="com.example.todo.fragment.FragmentMenuList"
+        android:label="fragment_menu_list"
+        tools:layout="@layout/fragment_menu_list" >
+        <action
+            android:id="@+id/action_fragmentMenuList_to_fragmentMainList"
+            app:destination="@id/fragmentMainList"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+    </fragment>
+</navigation>

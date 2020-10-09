@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.FragmentMenuList">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/CardView_commonTasks"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:padding="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/TextView_commonTasksName"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:textAlignment="center"
+            android:textColor="@color/nikitasBgColor"
+            android:textSize="30sp"
+            tools:text="@string/app_name" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/CardView_importantTasks"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:padding="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CardView_commonTasks">
+
+        <TextView
+            android:id="@+id/TextView_importantTasksName"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:textAlignment="center"
+            android:textColor="@color/nikitasBgColor"
+            android:textSize="30sp"
+            tools:text="@string/app_name" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/CardView_plannedTasks"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:padding="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/CardView_importantTasks">
+
+        <TextView
+            android:id="@+id/TextView_plannedTasksName"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:textAlignment="center"
+            android:textColor="@color/nikitasBgColor"
+            android:textSize="30sp"
+            tools:text="@string/app_name" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/Recycler_plannedList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/CardView_plannedTasks"
+        tools:itemCount="10"
+        tools:listitem="@layout/menu_item" />
+</androidx.constraintlayout.widget.ConstraintLayout>
