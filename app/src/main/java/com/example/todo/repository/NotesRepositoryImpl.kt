@@ -34,4 +34,5 @@ class NotesRepositoryImpl(val context: Context) :
     private suspend fun getListSuspending(): List<NoteCommonImpl> {
         return NotesDataBase.getInstance(context).noteDao().getAllNotes()
     }
+    //fun setStripe()
 }

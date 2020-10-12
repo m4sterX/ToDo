@@ -1,9 +1,6 @@
 package com.example.todo.data_base_sqlite
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 import com.example.todo.data.NoteCommonImpl
 
 @Dao
@@ -20,10 +17,10 @@ interface NoteDAO {
     @Query("SELECT * FROM Notes WHERE text LIKE (:text)")
     fun getNoteByText(text: String) : NoteCommonImpl
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertNote(noteCommonImpl: NoteCommonImpl)
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(vararg noteCommonImpls: NoteCommonImpl)
 
     @Delete

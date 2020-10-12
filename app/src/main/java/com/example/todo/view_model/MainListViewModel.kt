@@ -23,4 +23,7 @@ class MainListViewModel(application: Application) : AndroidViewModel(application
     fun fetchList(){
         notesListLivedata.postValue(repositoryImpl.loadNotesList())
     }
+    fun setStrikeThrowText(){
+
+    }
 }

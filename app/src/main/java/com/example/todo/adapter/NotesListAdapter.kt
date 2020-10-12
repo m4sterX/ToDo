@@ -1,5 +1,6 @@
 package com.example.todo.adapter
 
+import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,12 +8,19 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todo.data.NoteCommonImpl
 import com.example.todo.R
+import kotlinx.android.synthetic.main.item_list.view.*
 
-class NotesListAdapter() : RecyclerView.Adapter<NotesListAdapter.ViewHolder>() {
-    constructor(notesList: List<NoteCommonImpl>) : this() {
+
+class NotesListAdapter(_onItemCommonClickListener: OnItemCommonClickListener) :
+    RecyclerView.Adapter<NotesListAdapter.ViewHolder>() {
+    constructor(
+        notesList: List<NoteCommonImpl>,
+        _onItemCommonClickListener: OnItemCommonClickListener
+    ) : this(_onItemCommonClickListener) {
         mNotesList = notesList
     }
 
+    val onItemCommonClickListener: OnItemCommonClickListener = _onItemCommonClickListener
     var mNotesList: List<NoteCommonImpl> = ArrayList(0)
 
 
@@ -21,7 +29,10 @@ class NotesListAdapter() : RecyclerView.Adapter<NotesListAdapter.ViewHolder>() {
 
         init {
             itemView.setOnClickListener { v: View ->
-                val position = adapterPosition
+                onItemCommonClickListener.onItemClick(
+                    //mNotesList.get(adapterPosition))
+                    itemView.main_text
+                )
             }
         }
     }
@@ -37,4 +48,9 @@ class NotesListAdapter() : RecyclerView.Adapter<NotesListAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.itemText.text = mNotesList[position].text
     }
+
+}
+
+interface OnItemCommonClickListener {
+    fun onItemClick(textView: TextView)
 }
